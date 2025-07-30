@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application built with React and Express.js that manages a food order queue system for students. The application allows staff to view, process, and track orders through different stages (received, preparing, ready). It features a clean, modern UI with real-time animations and responsive design.
+This is a full-stack web application built with React and Express.js that manages a food order queue system for students. The application displays exactly 5 order cards at a time with smooth animations when orders are processed. Staff can view student orders with details like name, order type (Lanche/Sobremesa), order details, and timestamps. The interface features a header with total order count and a fixed bottom "Next" button that moves the first order to the end of the queue with slide-up animations.
 
 ## User Preferences
 
@@ -57,11 +57,14 @@ Preferred communication style: Simple, everyday language.
 - `PATCH /api/orders/:id/status` - Update order status
 
 ### Frontend Features
-- **Order Queue Display**: Visual queue with color-coded status indicators
+- **5-Card Display**: Shows exactly 5 order cards at a time with overflow handling
+- **Order Counter**: Header displays total number of orders in system
+- **Fixed Next Button**: Always visible at bottom for processing next order
+- **Smooth Animations**: Slide-up animations when new cards enter from bottom
+- **Status Indicators**: Color-coded dots showing order status (ready/preparing/received)
+- **Student Avatars**: Initials-based avatars with rotating colors
+- **Order Types**: Visual badges for Lanche, Sobremesa, or combined orders
 - **Real-time Updates**: Automatic data fetching with TanStack Query
-- **Responsive Design**: Mobile-first design with Tailwind CSS
-- **Interactive Elements**: Buttons for processing orders and updating status
-- **Animations**: Smooth transitions when orders change state
 
 ## Data Flow
 

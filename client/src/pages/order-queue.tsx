@@ -75,7 +75,7 @@ function formatTime(date: Date): string {
   }).format(new Date(date));
 }
 
-function OrderCard({ order, index }: { order: Order; index: number }) {
+const OrderCard = ({ order, index }: { order: Order; index: number }) => {
   const typeColors = getTypeColor(order.orderType);
   const types = order.orderType.split("/");
 
@@ -143,7 +143,7 @@ function OrderCard({ order, index }: { order: Order; index: number }) {
       </Card>
     </motion.div>
   );
-}
+};
 
 function EmptyState() {
   return (

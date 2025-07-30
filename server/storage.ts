@@ -2,9 +2,6 @@ import { type Order, type InsertOrder } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
   getAllOrders(): Promise<Order[]>;
   createOrder(order: InsertOrder): Promise<Order>;
   updateOrderStatus(id: string, status: string): Promise<Order | undefined>;
@@ -12,11 +9,9 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
   private orders: Map<string, Order>;
 
   constructor() {
-    this.users = new Map();
     this.orders = new Map();
     
     // Initialize with some sample orders
@@ -89,22 +84,7 @@ export class MemStorage implements IStorage {
     });
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
-  }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
-  }
 
   async getAllOrders(): Promise<Order[]> {
     return Array.from(this.orders.values()).sort(
@@ -117,6 +97,7 @@ export class MemStorage implements IStorage {
     const order: Order = {
       ...insertOrder,
       id,
+      status: insertOrder.status || "received",
       createdAt: new Date(),
     };
     this.orders.set(id, order);
