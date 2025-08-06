@@ -15,9 +15,16 @@ export class MemStorage implements IStorage {
     this.orders = new Map();
     
     // Initialize with some sample orders
+    /* The `this.initializeOrders()` method in the `MemStorage` class is responsible for initializing
+    the storage with some sample orders. It creates a set of sample orders with predefined data such
+    as student names, order types, details, statuses, and creation dates. These sample orders are
+    then added to the `orders` Map within the `MemStorage` instance. This method is called in the
+    constructor of `MemStorage` to ensure that the storage is populated with initial data when an
+    instance of `MemStorage` is created. */
     this.initializeOrders();
   }
 
+  
   private initializeOrders() {
     const sampleOrders: Omit<Order, 'id'>[] = [
       {

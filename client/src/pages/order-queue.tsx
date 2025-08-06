@@ -81,7 +81,7 @@ const OrderCard = ({ order, index }: { order: Order; index: number }) => {
 
   return (
     <motion.div
-      layout
+      layout="position"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -100 }}
